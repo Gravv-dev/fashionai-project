@@ -1,0 +1,167 @@
+@import "tailwindcss";
+
+/* FashionTech AI — Original design system.
+   Inspired by research structure (semantic landmarks, H1→H2→H3 hierarchy,
+   disabled-state pattern, pressed/checked states) — all values original. */
+
+:root {
+  --background: #ffffff;
+  --foreground: #0f172a;
+
+  /* Brand — original fashion-tech palette */
+  --brand: #0f172a;        /* deep ink */
+  --brand-600: #1e293b;
+  --accent: #c08497;       /* muted rose-gold */
+  --accent-hover: #a87282;
+
+  /* Surfaces */
+  --surface: #fafaf9;      /* near-white background */
+  --surface-muted: #f3f2f0;
+  --card: #ffffff;
+  --card-hover: #f8f8f7;
+
+  /* Text */
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --text-muted: #94a3b8;
+  --text-inverse: #ffffff;
+
+  /* Borders */
+  --border: #e7e5e4;
+  --border-hover: #d4d2d0;
+
+  /* Accent states */
+  --success: #15803d;
+  --warning: #b45309;
+  --error: #dc2626;
+  --info: #0ea5e9;
+
+  /* Radius */
+  --radius: 0.5rem;
+  --radius-lg: 0.75rem;
+
+  /* Fonts */
+  --font-sans: var(--font-inter);
+  --font-mono: var(--font-geist-mono);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-brand: var(--brand);
+  --color-brand-600: var(--brand-600);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-surface: var(--surface);
+  --color-surface-muted: var(--surface-muted);
+  --color-card: var(--card);
+  --color-card-hover: var(--card-hover);
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-muted: var(--text-muted);
+  --color-text-inverse: var(--text-inverse);
+  --color-border: var(--border);
+  --color-border-hover: var(--border-hover);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-error: var(--error);
+  --color-info: var(--info);
+  --radius: var(--radius);
+  --radius-lg: var(--radius-lg);
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
+}
+
+@supports (font-variation-settings: normal) {
+  :root {
+    --font-inter: "Inter", sans-serif;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #fafafa;
+    --surface: #111111;
+    --surface-muted: #1a1a1a;
+    --card: #141414;
+    --card-hover: #1c1c1c;
+    --text-primary: #fafafa;
+    --text-secondary: #a1a1aa;
+    --text-muted: #71717a;
+    --text-inverse: #0a0a0a;
+    --border: #272727;
+    --border-hover: #3a3a3a;
+    --brand: #ffffff;
+    --brand-600: #e4e4e7;
+    --accent: #c08497;
+    --accent-hover: #d6a3b3;
+  }
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+}
+
+.font-sans {
+  font-family: var(--font-sans);
+}
+
+.font-mono {
+  font-family: var(--font-mono);
+}
+
+/* Utility: visually hidden for accessibility */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Focus styles */
+.focus-visible-ring:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* Disabled button pattern (from research observation) */
+button:disabled,
+a[aria-disabled="true"] {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Skeleton animation */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.skeleton {
+  background: linear-gradient(90deg, var(--surface-muted) 25%, var(--surface) 50%, var(--surface-muted) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: var(--radius);
+}
